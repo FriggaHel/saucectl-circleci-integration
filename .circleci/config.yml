@@ -12,9 +12,10 @@ jobs:
       - setup_remote_docker:
           version: 20.10.2
       - saucectl/saucectl-run:
+          environment:
+            SAUCE_USERNAME: $SAUCE_USERNAME
+            SAUCE_ACCESS_KEY: $SAUCE_ACCESS_KEY
           show-console-log: true
-          sauce-username: $SAUCE_USERNAME
-          sauce-access-key: $SAUCE_ACCESS_KEY
           config-file: ./sauce/config.yml
           region: us-west-1
   test_sauce:
@@ -23,9 +24,10 @@ jobs:
     steps:
       - checkout
       - saucectl/saucectl-run:
+          environment:
+            SAUCE_USERNAME: $SAUCE_USERNAME
+            SAUCE_ACCESS_KEY: $SAUCE_ACCESS_KEY
           show-console-log: true
-          sauce-username: $SAUCE_USERNAME
-          sauce-access-key: $SAUCE_ACCESS_KEY
           config-file: ./sauce/config.yml
           region: us-west-1
           testing-environment: sauce
