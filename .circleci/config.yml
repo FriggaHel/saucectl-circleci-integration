@@ -28,7 +28,7 @@ jobs:
       - checkout
       - saucectl/saucectl-run:
           show-console-log: true
-          config-file: ./sauce/config.yml
+          config-file: ./.sauce/config.yml
           region: us-west-1
           testing-environment: sauce
 
