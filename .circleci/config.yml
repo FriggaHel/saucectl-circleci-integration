@@ -6,7 +6,7 @@ orbs:
 jobs:
   test_local:
     docker:
-      image: cimg/base:stable
+      - image: cimg/base:stable
     steps:
       - checkout
       - setup_remote_docker:
@@ -19,7 +19,7 @@ jobs:
           region: us-west-1
   test_sauce:
     docker:
-      image: cimg/base:stable
+      - image: cimg/base:stable
     steps:
       - checkout
       - saucectl/saucectl-run:
