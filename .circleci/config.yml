@@ -3,15 +3,19 @@ version: 2.1
 orbs:
   saucectl: saucelabs/saucectl-run@dev:alpha
 
-workflows:
-  test:
-    jobs:
+jobs:
+  test_local:
+    steps:
+      - checkout
       - saucectl/run:
           show-console-log: true
           sauce-username: $SAUCE_USERNAME
           sauce-access-key: $SAUCE_ACCESS_KEY
           config-file: ./sauce/config.yml
           region: us-west-1
+  test_sauce:
+    steps:
+      - checkout
       - saucectl/run:
           show-console-log: true
           sauce-username: $SAUCE_USERNAME
@@ -19,3 +23,11 @@ workflows:
           config-file: ./sauce/config.yml
           region: us-west-1
           testing-environment: sauce
+
+workflows:
+  test_local_and_remote:
+    jobs:
+      - test_local
+      - test_sauce:
+          requires:
+            - test_local
