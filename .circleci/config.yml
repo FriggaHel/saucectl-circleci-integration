@@ -7,7 +7,7 @@ jobs:
   test_local:
     steps:
       - checkout
-      - saucectl/run:
+      - saucectl/saucectl-run:
           show-console-log: true
           sauce-username: $SAUCE_USERNAME
           sauce-access-key: $SAUCE_ACCESS_KEY
@@ -16,7 +16,7 @@ jobs:
   test_sauce:
     steps:
       - checkout
-      - saucectl/run:
+      - saucectl/saucectl-run:
           show-console-log: true
           sauce-username: $SAUCE_USERNAME
           sauce-access-key: $SAUCE_ACCESS_KEY
