@@ -16,7 +16,7 @@ jobs:
           version: 20.10.2
       - saucectl/saucectl-run:
           show-console-log: true
-          config-file: ./sauce/config.yml
+          config-file: ./.sauce/config.yml
           region: us-west-1
   test_sauce:
     docker:
