@@ -7,9 +7,6 @@ jobs:
   test_local:
     docker:
       - image: cimg/base:stable
-    environment:
-      SAUCE_USERNAME: $SAUCE_USERNAME
-      SAUCE_ACCESS_KEY: $SAUCE_ACCESS_KEY
     steps:
       - checkout
       - setup_remote_docker:
@@ -21,9 +18,6 @@ jobs:
   test_sauce:
     docker:
       - image: cimg/base:stable
-    environment:
-      SAUCE_USERNAME: $SAUCE_USERNAME
-      SAUCE_ACCESS_KEY: $SAUCE_ACCESS_KEY
     steps:
       - checkout
       - saucectl/saucectl-run:
