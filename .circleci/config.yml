@@ -5,8 +5,12 @@ orbs:
 
 jobs:
   test_local:
+    docker:
+      image: cimg/base:stable
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.2
       - saucectl/saucectl-run:
           show-console-log: true
           sauce-username: $SAUCE_USERNAME
@@ -14,6 +18,8 @@ jobs:
           config-file: ./sauce/config.yml
           region: us-west-1
   test_sauce:
+    docker:
+      image: cimg/base:stable
     steps:
       - checkout
       - saucectl/saucectl-run:

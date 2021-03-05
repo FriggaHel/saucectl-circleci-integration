@@ -27,4 +27,4 @@ suites:
       hello: world
       # SAUCE_REGION: us-west-1
 docker:
-  fileTransfer: mount
+  fileTransfer: copy
