@@ -3,33 +3,15 @@ version: 2.1
 orbs:
   saucectl: saucelabs/saucectl-run@dev:alpha
 
-jobs:
-  test_local:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.2
-      - saucectl/run:
+workflows:
+  test_local_and_remote:
+    jobs:
+      - saucectl/saucectl-run:
           show-console-log: true
           config-file: ./.sauce/config.yml
           region: us-west-1
-  test_sauce:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - saucectl/run:
+      - saucectl/saucectl-run:
           show-console-log: true
           config-file: ./.sauce/config.yml
           region: us-west-1
           testing-environment: sauce
-
-workflows:
-  test_local_and_remote:
-    jobs:
-      - test_local
-      - test_sauce:
-          requires:
-            - test_local
